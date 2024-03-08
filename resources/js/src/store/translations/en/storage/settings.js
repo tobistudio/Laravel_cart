@@ -1,0 +1,77 @@
+const translations = {
+    'title': "Settings",
+    'description': "Settings",
+
+    'warehouse.title': "Warehouses",
+    'warehouse.title_create': "Create Warehouse",
+    'warehouse.title_edit': "Edit Warehouse",
+    'warehouse.default': "Default",
+    'warehouse.set_default': "Set default",
+    'warehouse.create': "Create",
+    'warehouse.edit': "Edit",
+    'warehouse.delete': "Delete",
+    'warehouse.cancel': "Cancel",
+    'warehouse.save': "Save",
+
+    'warehouse.fields.name': "Name",
+    'warehouse.fields.country': "Country",
+    'warehouse.fields.street': "Street",
+    'warehouse.fields.city': "City",
+    'warehouse.fields.postal_code': "Postal code",
+    'warehouse.fields.contact_person': "Contact person",
+    'warehouse.fields.phone_number': "Phone number",
+
+    'warehouse.message.name_required': 'name is required',
+    'warehouse.message.country_required': 'Country is required',
+    'warehouse.message.country_not_exists': 'Country does not exists',
+    'warehouse.message.street_required': 'Street is required',
+    'warehouse.message.city_required': 'City is required',
+    'warehouse.message.postal_code_required': 'Postal code is required',
+    'warehouse.message.contact_person_required': 'Contact person is required',
+    'warehouse.message.phone_number_required': 'Phone number is required',
+
+    'store.title': "Stores",
+    'store.title_create': "Create Store",
+    'store.title_edit': "Edit Store",
+    'store.default': "Default",
+    'store.set_default': "Set default",
+    'store.update_information': "Update information",
+    'store.create': "Create",
+    'store.edit': "Edit",
+    'store.delete': "Delete",
+    'store.cancel': "Cancel",
+    'store.save': "Save",
+
+    'store.language.title_connect': "Connect language",
+    'store.language.connect': "Connect language",
+    'store.language.cancel': "Cancel",
+    'store.language.save': "Save",
+
+    'store.language.fields.country': "Language",
+
+    'store.fields.name': "Name",
+    'store.fields.url': "Url",
+    'store.fields.platform': "Platform",
+    'store.fields.warehouse': "Warehouse",
+
+    'store.message.name_required': 'Name is required',
+    'store.message.url_required': 'Url is required',
+    'store.message.invalid_url_format': 'Invalid Url format',
+    'store.message.platform_required': 'Platform is required',
+    'store.message.platform_not_exists': 'Platform does not exists',
+    'store.message.warehouse_required': 'Warehouse is required',
+    'store.message.warehouse_not_exists': 'Warehouse does not exists',
+
+    'language.title': 'Languages',
+    'language.title_create': 'Add Language',
+    'language.create': "Create",
+    'language.delete': "Delete",
+    'language.cancel': "Cancel",
+    'language.save': "Save",
+
+    'language.fields.country': "Language",
+    'language.message.country_required': 'Language is required',
+    'language.message.country_not_exists': 'Language does not exists',
+}
+
+export default translations
