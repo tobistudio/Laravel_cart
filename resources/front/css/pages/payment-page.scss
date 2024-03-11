@@ -1,0 +1,41 @@
+.block.payment {
+    h2 {
+        margin: 0 0 12px 0;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 30px;
+        letter-spacing: -0.48px;
+
+        @media screen {
+            @media (max-width: 767px) {
+                font-size: 20px;
+                line-height: 26px;
+                letter-spacing: -0.4px;
+            }
+        }
+    }
+
+    &:not(:last-child) {
+        margin: 0 0 48px 0;
+
+        @media screen {
+            @media (max-width: 767px) {
+                margin: 0 0 40px 0;
+            }
+        }
+    }
+
+    p {
+        &:not(:last-child) {
+            margin: 0 0 12px 0;
+        }
+    }
+
+    .info-warning {
+        margin: 0;
+
+        &:not(:last-child) {
+            margin: 0 0 16px 0;
+        }
+    }
+}

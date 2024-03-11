@@ -1,0 +1,28 @@
+.full-width-text-background-image-block {
+    margin: 88px 0 0 0;
+    padding: 75px 15px;
+    background: url('../images/who-we-are-bg-image.png') center center no-repeat;
+    background-size: cover;
+    color: #FFF;
+    text-align: center;
+    border-radius: 8px;
+
+    @media screen {
+        @media (max-width: 767px) {
+            margin: 63px 0 0 0;
+        }
+    }
+
+    .block-heading {
+        font-size: 30px;
+        line-height: 36px;
+        letter-spacing: -0.6px;
+        margin: 0 0 17px 0;
+        color: #FFF;
+    }
+
+    p {
+        max-width: 520px;
+        margin: 0 auto 39px;
+    }
+}

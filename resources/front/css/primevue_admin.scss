@@ -1,0 +1,45 @@
+.p-float-label {
+    input.p-filled ~ label {
+        background: rgba(var(--white-color)) !important;
+        padding-left: 8px;
+        padding-right: 8px;
+        top: 3px !important;
+    }
+
+    input:focus ~ label {
+        background: rgba(var(--white-color)) !important;
+        padding-left: 8px;
+        padding-right: 8px;
+        top: 3px !important;
+    }
+}
+
+.p-inputtext:enabled:focus {
+    box-shadow: 0 0 0 0.2rem rgba(var(--primary-color));
+    border: 1px solid rgba(var(--primary-color));
+}
+
+.p-checkbox {
+    &.p-highlight {
+        .p-checkbox-box {
+            border-color: rgba(var(--primary-color));
+            background: rgba(var(--primary-color));
+            color: #ffffff;
+        }
+    }
+}
+
+.p-radiobutton {
+    &.p-highlight {
+        .p-radiobutton-box {
+            border-color: rgba(var(--primary-color));
+            background: rgba(var(--primary-color));
+            color: #ffffff;
+        }
+    }
+}
+
+.p-multiselect:not(.p-disabled).p-focus {
+    box-shadow: 0 0 0 0.2rem rgba(var(--primary-color));
+    border: 1px solid rgba(var(--primary-color));
+}

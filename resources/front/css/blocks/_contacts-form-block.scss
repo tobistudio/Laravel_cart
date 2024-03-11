@@ -1,0 +1,98 @@
+.contacts-form-block {
+    display: flex;
+    gap: 0 130px;
+
+    @media screen {
+        @media (max-width: 1199px) {
+            gap: 0 70px;
+        }
+
+        @media (max-width: 991px) {
+            flex-direction: column;
+            gap: 48px 0;
+        }
+
+        @media (max-width: 575px) {
+            flex-direction: column;
+            gap: 42px 0;
+        }
+    }
+
+    .image {
+        flex-grow: 1;
+        pointer-events: none;
+
+        @media screen {
+            @media (max-width: 991px) {
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+
+    .form {
+        flex-shrink: 0;
+        width: 495px;
+
+        @media screen {
+            @media (max-width: 991px) {
+                width: 100%;
+            }
+        }
+
+        .section-heading {
+            margin: 0 0 8px 0;
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 36px;
+            letter-spacing: -0.6px;
+
+            @media screen {
+                @media (max-width: 575px) {
+                    font-size: 23px;
+                    line-height: 29px;
+                    letter-spacing: -0.46px;
+                }
+            }
+        }
+
+        .form-text {
+            p {
+                margin: 0 0 32px 0;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 24px;
+            }
+        }
+
+        .form-group {
+            display: block;
+
+            label {
+                display: block;
+                margin: 0 0 8px 0;
+                line-height: 16px;
+                color: #0D2441;
+            }
+
+            &.required {
+                label {
+                    &::after {
+                        content: '*';
+                        color: #E72E2C;
+                    }
+                }
+            }
+
+            .form-control {
+                width: 100%;
+            }
+        }
+
+        .submit-form {
+            .btn {
+
+            }
+        }
+    }
+}

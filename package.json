@@ -1,0 +1,40 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^5.0.4",
+        "axios": "^1.6.7",
+        "laravel-vite-plugin": "^1.0.1",
+        "less": "^4.2.0",
+        "sass": "^1.71.1",
+        "vite": "^5.1.4",
+        "vite-plugin-mkcert": "^1.17.3"
+    },
+    "dependencies": {
+        "@he-tree/vue": "^2.8.1",
+        "@morioh/v-quill-editor": "^1.0.2",
+        "@tinymce/tinymce-vue": "^5.1.1",
+        "@tiptap/extension-bullet-list": "^2.2.3",
+        "@tiptap/extension-color": "^2.2.3",
+        "@tiptap/extension-link": "^2.2.3",
+        "@tiptap/extension-list-item": "^2.2.3",
+        "@tiptap/extension-text-style": "^2.2.3",
+        "@tiptap/pm": "^2.2.3",
+        "@tiptap/starter-kit": "^2.2.3",
+        "@tiptap/vue-3": "^2.2.3",
+        "@vitejs/plugin-basic-ssl": "^1.1.0",
+        "@vueup/vue-quill": "^1.2.0",
+        "boxicons": "^2.1.4",
+        "primevue": "^3.48.1",
+        "vue": "^3.4.19",
+        "vue-meta": "^2.4.0",
+        "vue-router": "^4.1.6",
+        "vuedraggable": "^4.1.0",
+        "vuejs-quill": "^1.4.0",
+        "vuex": "^4.1.0"
+    }
+}

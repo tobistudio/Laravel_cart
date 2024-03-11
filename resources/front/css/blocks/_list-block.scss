@@ -1,0 +1,26 @@
+.list-block {
+    ol {
+        padding: 0;
+        list-style: none;
+        counter-reset: ol-counter;
+
+        li {
+            position: relative;
+            padding: 0;
+
+            p {
+                display: inline;
+            }
+
+            &:not(:last-child) {
+                margin: 0 0 25px 0;
+            }
+
+            &::before {
+                content: counter(ol-counter) ".";
+                counter-increment:ol-counter;
+                margin: 0 2px 0 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+.benefits-block {
+    .benefit {
+        min-height: 110px;
+        padding: 16px 23px;
+        background: #F4F4F6;
+        border-radius: 8px;
+
+        &:not(:last-child) {
+            margin: 0 0 8px 0;
+        }
+
+        .icon {
+            display: flex;
+            align-items: flex-end;
+            height: 32px;
+            width: 100%;
+            margin: 0 0 20px 0;
+            pointer-events: none;
+        }
+
+        .name {
+            display: block;
+            line-height: 18px;
+            color: #0D2441;
+            font-weight: 600;
+        }
+    }
+}
