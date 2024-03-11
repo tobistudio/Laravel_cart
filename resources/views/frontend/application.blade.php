@@ -46,6 +46,12 @@
             @if($block['key'] === 'block-newsletter')
                 @include('frontend.sections.newsletter', ['data' => $block['data']])
             @endif
+            @if($block['key'] === 'block-product-details')
+                    @include('frontend.sections.product_details', ['data' => $block['data']])
+            @endif
+                @if($block['key'] === 'block-cart-items')
+                    @include('frontend.sections.cart', ['data' => $block['data']])
+                @endif
         @endforeach
 </main>
 @endsection

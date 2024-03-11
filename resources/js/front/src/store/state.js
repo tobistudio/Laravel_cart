@@ -9,6 +9,9 @@ const state = {
     API_URL: import.meta.env.VITE_API_URL,
 
     authPopup: null,
+    cartItems: [],
+    comparisonList: [],
+    comparisonCount: 0,
 };
 
 export default state

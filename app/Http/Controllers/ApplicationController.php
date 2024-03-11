@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActiveCart;
+use App\Models\ActiveCartProduct;
 use App\Models\Language;
 use App\Models\LanguagePage;
 use App\Models\LanguagePageBlock;
@@ -18,6 +20,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\Foundation\Application as ContractApplication;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class ApplicationController extends Controller
 {
@@ -111,6 +114,7 @@ class ApplicationController extends Controller
             ];
 
             $blocks = LanguagePageBlock::where('language_page_id', $page->id)->orderBy('order')->get()->toArray();
+
             foreach($blocks as $block_index => $block){
                 if($block['key'] === 'block-hero-search' && $block['data']['show_vehicle_brands']){
                     foreach($block['data']['vehicle_brands'] as $vehicle_brand_index => $vehicle_brand){
@@ -191,8 +195,86 @@ class ApplicationController extends Controller
                     }
                     $blocks[$block_index]['data']['recent_posts'] = $recent_posts;
                 }
-            }
 
+                if($block['key'] === 'block-product-details')
+                {
+                    $productData = (new ProductData)->where('product_id', $page->id)->first(['id', 'product_id', 'sku', 'price', 'special_price', 'manufacturer_id']);
+
+                    if ($productData) {
+                        $product = (new LanguagePage)->where('id', $productData->product_id)->first(['id', 'name', 'featured_image', 'slug','description']);
+                        $manufacturer = (new LanguagePage)->where('page_id', $productData->manufacturer_id)->first(['id', 'name', 'featured_image']);
+
+                        $labels = [];
+                        $labelIds = (new ProductLabelLabel)->where('product_data_id', $productData->id)->pluck('product_label_id')->toArray();
+                        $_labels = (new ProductLabel)->whereIn('id', $labelIds)->get(['id', 'key']);
+                        foreach ($_labels as $_label) {
+                            $labelLanguage = (new ProductLabelLanguage)->where('label_id', $_label->id)->where('language_id', $active_language->id)->first(['name']);
+
+                            $labels[] = [
+                                'name' => $labelLanguage->name,
+                                'key' => $_label->key,
+                            ];
+                        }
+
+                        $productDetails = [
+                            'id' => $page->page_id,
+                            'name' => $product->name,
+                            'image' => $product->featured_image,
+                            'slug' => $locale . '/' . $product->slug,
+                            'product_data' => $productData,
+                            'manufacturer' => $manufacturer ? [
+                                'name' => $manufacturer->name,
+                                'image' => $manufacturer->featured_image
+                            ] : null,
+                            'sku' => $productData->sku,
+                            'description' => $product->description,
+                            'price' => number_format($productData->price, 2),
+                            'special_price' => $productData->special_price && $productData->special_price < $productData->price ? number_format($productData->special_price, 2) : null,
+                            'discount_percentage' => $productData->special_price && $productData->special_price < $productData->price ? $this->getDiscountPercentage($productData->price, $productData->special_price) : null,
+                            'labels' => $labels
+                        ];
+
+                        $blocks[$block_index]['data']['product_details'] = $productDetails;
+                    }
+                }
+
+
+                if ($block['key'] === 'block-cart-items') {
+                    $identifier = Auth::check() ? null : Session::getId();
+                    $cart = ActiveCart::where('session_id', $identifier)->where('user_id', Auth::id())->first();
+
+                    if ($cart) {
+                        $cartItems = ActiveCartProduct::where('cart_id', $cart->id)->get();
+                        $cartDetails = [];
+
+                        foreach ($cartItems as $item) {
+                            $productData = ProductData::where('id', $item->product_id)->first(['id', 'product_id', 'sku', 'price', 'special_price', 'manufacturer_id']);
+                            if ($productData) {
+                                $product = LanguagePage::where('id', $productData->product_id)->first(['id', 'name', 'featured_image', 'slug']);
+                                $manufacturer = LanguagePage::where('page_id', $productData->manufacturer_id)->first(['id', 'name', 'featured_image']);
+
+                                $cartDetails[] = [
+                                    'product_id' => $productData->product_id,
+                                    'name' => $product->name,
+                                    'image' => $product->featured_image,
+                                    'slug' => $locale . '/' . $product->slug,
+                                    'sku' => $productData->sku,
+                                    'price' => number_format($productData->price, 2),
+                                    'special_price' => $productData->special_price && $productData->special_price < $productData->price ? number_format($productData->special_price, 2) : null,
+                                    'manufacturer' => $manufacturer ? [
+                                        'name' => $manufacturer->name,
+                                        'image' => $manufacturer->featured_image
+                                    ] : null,
+                                    'quantity' => $item->qty
+                                ];
+                            }
+                        }
+
+                        $blocks[$block_index]['data']['cart_items'] = $cartDetails;
+                    }
+                }
+
+            }
             return view('frontend.application', compact('meta_data', 'locale', 'auth', 'languages', 'menus', 'blocks', 'url'));
         }
     }

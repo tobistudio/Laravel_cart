@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\LanguagesController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PageController;
@@ -67,4 +68,14 @@ Route::group(['prefix' => '/auth'], function () {
 
         Route::get('/logout', [AuthController::class, 'logout']);
     });
+});
+Route::middleware('web')->group(function () {
+    Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+    Route::post('/cart/increase', [CartController::class, 'increaseQuantity'])->name('cart.increase');
+    Route::post('/cart/decrease', [CartController::class, 'decreaseQuantity'])->name('cart.decrease');
+    Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
+    Route::get('/cart/items', [CartController::class, 'getCartItems'])->name('cart.items');
+    Route::post('/cart/update', [CartController::class, 'updateQuantity'])->name('cart.update');
+
+
 });
