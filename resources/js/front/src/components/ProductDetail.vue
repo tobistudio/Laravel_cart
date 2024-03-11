@@ -15,6 +15,7 @@
                         <p style="white-space: pre-wrap">{{product.description}}</p>
                     </div>
                     <div class="product-code">Product Code: {{ product.sku }}</div>
+                    <comparison-checkbox :product="product"></comparison-checkbox>
                     <div class="price">
                         <span v-if="product.special_price" class="new-price">€{{ product.special_price }}</span>
                         <span v-if="product.special_price" class="old-price">€{{ product.price }}</span>
@@ -85,6 +86,7 @@
 </style>
 
 <script>
+import comparisonCheckbox from "./ComparisonCheckbox.vue";
 export default {
     props: ['product'],
     methods: {

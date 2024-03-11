@@ -50,11 +50,7 @@
 
                                 <div class="add-to-cart">
                                     <div class="form">
-                                        <div class="form-group d-flex checkbox">
-                                            <input id="compare-1" name="checkbox" type="checkbox">
-                                            <label for="compare-1">Pievienot salīdzināšanai (0/3)</label>
-                                        </div>
-
+                                        <comparison-checkbox :product="{{ json_encode($item) }}"></comparison-checkbox>
                                         <button type="button" class="cart-btn btn btn-primary">Ielikt grozā</button>
                                     </div>
                                 </div>

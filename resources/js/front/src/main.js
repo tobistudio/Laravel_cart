@@ -17,6 +17,8 @@ import AuthPopup from './components/AuthPopup.vue';
 import Newsletter from './components/Newsletter.vue';
 import ProductDetail from './components/ProductDetail.vue';
 import Cart from './components/Cart.vue';
+import ComparisonCheckbox from './components/ComparisonCheckbox.vue';
+import ComparisonPopup from './components/ComparisonPopup.vue';
 
 const app = createApp({
     components: {
@@ -29,6 +31,8 @@ const app = createApp({
         Newsletter,
         ProductDetail,
         Cart,
+        ComparisonCheckbox,
+        ComparisonPopup,
     }
 });
 

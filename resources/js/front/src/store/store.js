@@ -7,7 +7,7 @@
 import { createStore } from "vuex";
 
 import state from "./state";
-import actions from "./actions/actions.js";
+import { actions, getters } from "./actions/actions.js";
 
 const mutations = {
     SET_CART_ITEMS(state, cartItems) {
@@ -47,13 +47,31 @@ const mutations = {
         if (itemIndex !== -1) {
             state.cartItems[itemIndex].quantity = qty;
         }
-    }
+    },
+
+    ADD_TO_COMPARISON(state, product) {
+        if (state.comparisonList.length < 3 && !state.comparisonList.find(p => p.id === product.id)) {
+            state.comparisonList.push(product);
+        }
+    },
+
+    REMOVE_FROM_COMPARISON(state, productId) {
+        const index = state.comparisonList.findIndex(item => item.id === productId);
+        if (index !== -1) {
+            state.comparisonList.splice(index, 1);
+        }
+    },
+
+    CLEAR_COMPARISON_LIST(state) {
+        state.comparisonList = [];
+    },
 };
 
 const store = createStore({
     state,
     actions,
     mutations,
+    getters,
     // plugins: [createPersistedState()],
     strict: false
 });

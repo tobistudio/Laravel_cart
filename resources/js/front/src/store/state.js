@@ -10,6 +10,8 @@ const state = {
 
     authPopup: null,
     cartItems: [],
+    comparisonList: [],
+    comparisonCount: 0,
 };
 
 export default state
